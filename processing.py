@@ -9,7 +9,7 @@ from sklearn.inspection import permutation_importance
 
 ## Get the data an clean it
 path_to_dataset = "./"
-dataset_name = join(path_to_dataset, "Data_Scientist_-_Case_Dataset.xlsx")
+dataset_name = join(path_to_dataset, "Data_Scientist_-_Case_Dataset_splitted.xlsx")
 
 data = cleaning_data(dataset_name,
                     save_csv = False,

@@ -14,8 +14,8 @@ def cleaning_data(name, save_csv = False, print_info = False, output_name = None
     data = read_excel(name)
 
     # Some simple inspection to know the data
+    total_users = data.shape[0]
     if print_info:
-        total_users = data.shape[0]
         print(data.head())
         print(f"This dataset has {data.shape[1]} different parameters with {total_users} entries")
         print(f"The columns with nan values are: \n {data.isna().any()}")
@@ -23,20 +23,23 @@ def cleaning_data(name, save_csv = False, print_info = False, output_name = None
     ## as it is an individual identifier
     data.pop('customer_id')
 
-    for uniq in data["customer_segment"].unique():
-        repeated = len(data['customer_segment'][data['customer_segment'] == uniq].index)
-        print(f"The customer_segment {uniq} englobes {repeated} / {total_users} costumers")
+    data["customer_segment"], segments = factorize(data['customer_segment'], sort = True)
+    for uniq in segments:
+        repeated = len(data['customer_segment'][data['customer_segment'] == uniq - segments[0]].index)
+        if print_info:
+            print(f"The customer_segment {uniq} englobes {repeated} / {total_users} costumers")
     ## Not all the people filled the age value, which means that we might want to give a value to that:
     if print_info:
         nan_age = data["age"].isna().sum()
         print(f"Number of users with no age given {nan_age} / {total_users}")
-        ## They are not so many and they might be important, erasing the age with a random value, e.g. 100
-        ## might generate some biased towards higher values or erase the importance of higher values,
-        ## as they are not that many, I will pop them out, the same happens with the branch column,
-        ## where are 2 nan values
-        if dropnan:
-            data = data.dropna();
-            total_users = data.shape[0]
+    ## They are not so many and they might be important, erasing the age with a random value, e.g. 100
+    ## might generate some biased towards higher values or erase the importance of higher values,
+    ## as they are not that many, I will pop them out, the same happens with the branch column,
+    ## where are 2 nan values
+    if dropnan:
+        data = data.dropna();
+        total_users = data.shape[0]
+        if print_info:
             print(f"The number of rows has drop to {total_users}")
 
     ## Change the credit account into boolean variables, 1 if they gave a credit account
