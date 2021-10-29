@@ -65,8 +65,11 @@ Also, the version of Python that was use is python 3.9, although any version of 
 
 To run all the modules:
 
-```python3 Cleaning_data.py
+```
+python3 Cleaning_data.py
 
 python3 visualizing.py
 
-python3 processing.py```
+python3 processing.py
+
+```
