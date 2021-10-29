@@ -25,13 +25,13 @@
 
 \section{Introduction}
 
-One of the most important and interesting problems that one can face in a Machine learning project is the study of the importance of different parameters when building a model. Through this work, we face this problem in a classification problem, where we try to predict if a customer will be converted or not from basic information of the customers. To approach this task, we will first look into the data and pre-process it, then the data will be inspected, by trying to find some trivial relations between the prediction and the different features; and finally, we will create two different models and test how the different features affect the accuracy of the models. 
+One of the most important and interesting problems that one can face in a Machine learning project is the study of the importance of different parameters when building a model. Through this work, we face this problem in a classification problem, where we try to predict if a customer will be converted or not from basic information of the customers. To approach this task, we will first look into the data and pre-process it, then the data will be inspected, by trying to find some trivial relations between the prediction and the different features; and finally, we will create two different models and test how the different features affect the accuracy of the models.
 
 \section{Pre-processing}
 
 The pre-processing of the data is a simple task were we will convert the data and make it a suitable as possible for the models we shall train. For this, I have decided to use the data as a \texttt{pandas} \texttt{DataFrame}, which makes it simple to visualize and work with it. This data has 10 features and 891 rows, where the only feature that is not important and we shall avoid using is the \texttt{user\_id}, as this are individual labels for each user and will only miss lead the model.
 
-The first task is to open the dataset, which is saved in an Excell file called \texttt{Data\_Scientist\_-\_Case\_\\Dataset.xlsx}; and transform it into a \texttt{DataFrame}. Here we find some formatting issues, caused by the way the data has been saved, it is not saved into columns, but just in one column where all the features are separated by commas. 
+The first task is to open the dataset, which is saved in an Excell file called \texttt{Data\_Scientist\_-\_Case\_\\Dataset.xlsx}; and transform it into a \texttt{DataFrame}. Here we find some formatting issues, caused by the way the data has been saved, it is not saved into columns, but just in one column where all the features are separated by commas.
 
 The second task is to look into empty values, as it is seen there are 2 missing values in the feature \texttt{branch} and 177 in \texttt{age}. One could decide to erase all those rows or try to give random values. For the 2 empty branches it is better to just erase them, 2 users out of 891 is not important, if they were more, we could take that as a new branch itself. For the 177 users who did not give an age, due to the lack of prior information, it was decided to be erased, giving a random value to them, as 0 or 100, or the mean of the rest of ages, could generate a bias towards this values and the model should work properly with 712 users, we are not trying to make the model as precise as possible. It is important to highlight, that the use of empty values might not be a problem for some models so one could have continue without erasing them.
 
@@ -48,13 +48,13 @@ Before creating a model it is interesting to see if we can already get some intu
 
 In figure~\ref{fig:Scatter} we can see the a scatter of the different features in the file versus the classification task, \texttt{converted}. In this figure, we cannot see anything, there is no parameter that seem to be specially relevant. It is important to mention that this scattering plot is quite poor as it does not give any clue how many points we have in each category, there could be only 1 male who converted or 100, but we do not see any different. Hence, it is more interesting to look at some discrete variables and see the probability of each to convert.
 
-To make the comparison inside features, we will choose 3 interesting categories, to simplify this task, \texttt{gender}, \texttt{customer\_segment} and \texttt{branch}. The reason for choosing this 3 parameters is that, although we do not have any prior information they seem interesting and they have between 2 and 3 different categories. Non of the variables are balanced, there is 3 times more men than women, more than half of the customers belong to the segment 13 and the rest are, more or less, evenly distributed in the other 2 segments and nearly 80~\% of the users are part of the Helsinki branch, while only 4~\% belong to Turku, and the remaining to Tampere. This might create some bias when categorizing. 
+To make the comparison inside features, we will choose 3 interesting categories, to simplify this task, \texttt{gender}, \texttt{customer\_segment} and \texttt{branch}. The reason for choosing this 3 parameters is that, although we do not have any prior information they seem interesting and they have between 2 and 3 different categories. Non of the variables are balanced, there is 3 times more men than women, more than half of the customers belong to the segment 13 and the rest are, more or less, evenly distributed in the other 2 segments and nearly 80~\% of the users are part of the Helsinki branch, while only 4~\% belong to Turku, and the remaining to Tampere. This might create some bias when categorizing.
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{ c | c  c | c c c | c c c}
-  & female & male & 11 & 12 & 13 & Helsinki & Tampere & Turku \\ 
- Converted & 63.6~\% & 75.3~\% &  65.2~\% & 48~\% & 23.9~\% & 36.3~\% & 60.8~\% & 28.6~\%    
+  & female & male & 11 & 12 & 13 & Helsinki & Tampere & Turku \\
+ Converted & 63.6~\% & 75.3~\% &  65.2~\% & 48~\% & 23.9~\% & 36.3~\% & 60.8~\% & 28.6~\%
 \end{tabular}
 \caption{\label{tab:perc}Percentage of converted users in each category}
 \end{center}
