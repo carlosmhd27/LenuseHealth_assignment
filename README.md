@@ -40,21 +40,31 @@ Suggested tools / approaches
 - Remember to include your full answer and used visualizations (code and pdfs) in your submission
 
 Reach out to adithya@lenus.io if you have any questions regarding the case brief or dataset.
-  
+
 # Solution
-  
+
 The solution is nicely explained in the jupyter notebook `Solution.ipynb`. However, for a fast overlook of the work, one can run the 3 modules in the repository, `Cleaning_data.py`, `visualizing.py` and `processing.py`.
-  
+
 To make the debugging as simple as possible, remember to check the list of the needed packages:
-    
+
 * [numpy](https://numpy.org/)
 
 * [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html)
-    
+
 * [matplotlib](https://matplotlib.org/)
 
 * [scikit-learn](https://scikit-learn.org/stable/index.html)
 
 * [xgboost](https://xgboost.ai/)
-  
+
+For installing all the dependencies:
+
+pip install numpy pandas matplotlib scikit-learn xgboost
+
 Also, the version of Python that was use is python 3.9, although any version of python3 higher than 3.6 should work properly.
+
+To run all the modules:
+
+python3 Cleaning_data.py
+python3 visualizing.py
+python3 processing.py
