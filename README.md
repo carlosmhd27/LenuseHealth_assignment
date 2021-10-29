@@ -1,4 +1,4 @@
-# Lenuse Health
+# Lenus eHealth
 Customer segmentation challenge for Analysts
 
 Please complete the following data processing challenge by <INSERT DATE HERE>.
