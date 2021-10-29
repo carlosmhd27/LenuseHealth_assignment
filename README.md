@@ -41,9 +41,11 @@ Suggested tools / approaches
 
 Reach out to adithya@lenus.io if you have any questions regarding the case brief or dataset.
 
+----
+  
 # Solution
 
-The solution is nicely explained in the jupyter notebook `Solution.ipynb`. However, for a fast overlook of the work, one can run the 3 modules in the repository, `Cleaning_data.py`, `visualizing.py` and `processing.py`.
+The solution is nicely explained in the pdf document `Lenus_Data_Assignment.pdf`, compiled in latext through the `Lenus_Data_Assignment.tex` field. However, for a fast overlook of the work, one can read the notebook `Solution.ipynb` orrun the 3 modules in the repository, `Cleaning_data.py`, `visualizing.py` and `processing.py`.
 
 To make the debugging as simple as possible, remember to check the list of the needed packages:
 
