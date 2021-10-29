@@ -23,7 +23,7 @@ def modelling (X, y):
     ## for classification, making a higher order model, as a Neural Network,
     ## would not increase much further the result and would make it worse to
     ## look for the important features
-    model_ada = AdaBoostClassifier(n_estimators=100, random_state=0)
+    model_ada = AdaBoostClassifier(n_estimators=10, random_state=0)
     model_xgb = XGBClassifier(objective = 'binary:logistic', use_label_encoder=False,
                               max_depth = 2, learning_rate = 1.0,
                               n_estimators = 5, random_state=0)
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     models, rs = modelling(data, convert)
 
     model_names = ["AdaBoost", "XGBoost"]
-    fig, axs = subplots(2, figsize = (30, 30))
+    fig, axs = subplots(1, 2, figsize = (30, 18))
     fig.suptitle("Feature Importance", fontsize = 37)
 
     for ax, model_name, r  in zip(axs, model_names, rs):
@@ -91,5 +91,5 @@ if __name__ == '__main__':
                 hspace = 0.5,
                 wspace = 0.1
                 )
-    fig.savefig("Feature_importance.jpeg")
+    fig.savefig("Figures/Feature_importance.jpeg")
     show()

@@ -34,11 +34,11 @@ def visualize(datax, datay, num_plots = [4 , 2], y_label = "Converted", save_fig
                 top = 0.92,
                 left=0.07,
                 right=0.98,
-                hspace = 0.98,
+                hspace = 0.2,
                 wspace = 0.1
                 )
     if save_fig:
-        fig.savefig(join("./", save_fig))
+        fig.savefig(join("Figures/", save_fig))
     return fig, ax
 
 def plot_importance(ax, r, model_name, index):
@@ -60,12 +60,13 @@ if (__name__ == "__main__"):
     data = cleaning_data(dataset_name,
                         save_csv = False,
                         print_info = True)
-    segments = data["customer_segment"].unique()
-    for segment in segments:
-        data_sgmt = data.where(data['customer_segment'] != segment).dropna()
-        convert = data_sgmt.pop('converted')
-        print(f"This data field has {data_sgmt.shape[1]} different parameters with {data_sgmt.shape[0]} entries")
-        fig, ax = visualize(data_sgmt, convert, save_fig = f"{segment}.pdf")
+    # segments = data["customer_segment"].unique()
+    # for segment in segments:
+    # data_sgmt = data.where(data['customer_segment'] != segment).dropna()
+    data_sgmt = data.copy()
+    convert = data_sgmt.pop('converted')
+        # print(f"This data field has {data_sgmt.shape[1]} different parameters with {data_sgmt.shape[0]} entries")
+    fig, ax = visualize(data_sgmt, convert, save_fig = f"Scatter.pdf")
 
     ## A part from visualizing we can show some percentage:
 
