@@ -1,9 +1,8 @@
 from Cleaning_data     import cleaning_data
-from numpy             import shape
 from pandas            import Series
-from os.path           import join, isfile, isdir
-from matplotlib.pyplot import show, subplots,suptitle
-from matplotlib.pyplot import style, legend
+from os.path           import join
+from matplotlib.pyplot import show, subplots
+from matplotlib.pyplot import style
 
 style.use('seaborn-whitegrid')
 
@@ -17,7 +16,6 @@ def visualize(datax, datay, num_plots = [4 , 2], y_label = "Converted", save_fig
 
     ## We do not have that many variables, hence, we can actually plot everythingç
     ## and see which variables are interesting
-
 
     fig, ax = subplots(num_plots[0], num_plots[1], figsize=(30, 40))
     fig.suptitle(y_label,
@@ -44,7 +42,6 @@ def visualize(datax, datay, num_plots = [4 , 2], y_label = "Converted", save_fig
     return fig, ax
 
 def plot_importance(ax, r, model_name, index):
-
 
     importances = Series(r.importances_mean, index=index)
 
@@ -99,4 +96,4 @@ if (__name__ == "__main__"):
     print(f"{branch_1_convert * 100:1.3f} % of the branch Helsinki users has converted")
     print(f"{branch_2_convert * 100:1.3f} % of the branch Tampere has converted")
     print(f"{branch_3_convert * 100:1.3f} % of the branch Turku has converted")
-    # show()
+    show()

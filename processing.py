@@ -1,10 +1,10 @@
 from Cleaning_data           import cleaning_data
 from visualizing             import plot_importance
-from os.path                 import join, isfile, isdir
+from os.path                 import join
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble        import AdaBoostClassifier
 from xgboost.sklearn         import XGBClassifier
-from sklearn                 import  metrics, model_selection
+from sklearn.metrics         import accuracy_score
 from sklearn.inspection      import permutation_importance
 from matplotlib.pyplot       import show, subplots
 
@@ -32,7 +32,7 @@ def modelling (X, y):
 
     model_xgb = model_xgb.fit(X_train, y_train)
     y_pred = model_xgb.predict(X_val)
-    score_xgb = metrics.accuracy_score(y_val, y_pred)
+    score_xgb = accuracy_score(y_val, y_pred)
     print(f"The accuracy of the AdaBoostClassifier is {score_ada:.3f}")
     print(f"The accuracy of the XGBClassifier is {score_xgb:.3f}")
 
@@ -40,7 +40,7 @@ def modelling (X, y):
 
     ## Now, let's look at the most important feature, for that
     ## We will use the permutation_importance method from scikit-learn
-    ## Which basically erases different variables to see how the precission drops
+    ##006496e60b52f8cafd5d54aa19bca7c5cc6736c3 Which basically erases different variables to see how the precission drops
 
     r_ada = permutation_importance(model_ada, X_val, y_val,
                                     n_repeats=30,

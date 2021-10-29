@@ -1,5 +1,5 @@
-from os.path import join, isfile, isdir
-from pandas  import read_excel, factorize, read_csv, DataFrame
+from os.path import join, isfile
+from pandas  import read_excel, factorize
 from numpy   import nan
 
 def Excel_to_df(name):
