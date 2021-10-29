@@ -59,8 +59,9 @@ To make the debugging as simple as possible, remember to check the list of the n
 
 For installing all the dependencies:
 
+```
 pip install numpy pandas matplotlib scikit-learn xgboost
-
+```
 Also, the version of Python that was use is python 3.9, although any version of python3 higher than 3.6 should work properly.
 
 To run all the modules:
