@@ -40,7 +40,7 @@ def modelling (X, y):
 
     ## Now, let's look at the most important feature, for that
     ## We will use the permutation_importance method from scikit-learn
-    ##006496e60b52f8cafd5d54aa19bca7c5cc6736c3 Which basically erases different variables to see how the precission drops
+    ## Which basically erases different variables to see how the precission drops
 
     r_ada = permutation_importance(model_ada, X_val, y_val,
                                     n_repeats=30,
